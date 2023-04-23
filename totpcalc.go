@@ -21,6 +21,13 @@ func init() {
 	flag.Parse()
 }
 
+func MaskSecret(raw string) string {
+	return raw[0:3] + "......clea" + raw[len(raw)-3:]
+}
+
 func main() {
+	println("Using Time:", Time)
+	println("Using Secret:", MaskSecret(Secret))
+	println("Using Interval:", Int)
 	println("Digit: ", GenerateTOTP(Secret, Time/Int))
 }
